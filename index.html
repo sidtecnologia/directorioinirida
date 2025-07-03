@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Directorio empresarial de Socorro, con un diseño moderno y dinámico.">
+    <title>Directorio Comercial Socorro</title>    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+    <link rel="manifest" href="manifest.json"/>
+
+
+    <!-- CSS Frameworks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script charset="UTF-8" src="//web.webpushs.com/js/push/105871d9195f2018211dff972315ab8f_1.js" async></script>
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1 id= "inicio">Directorio Comercial</h1>
+        <h2>Socorro</h2>
+    </header>
+
+    <section>
+        <div class="background">
+            <img class="background" src="assets/images/principal/baner.webp" alt="Descripción de la imagen">
+        </div>
+    </section>
+
+
+    <!-- Carousel -->
+<section id="carousel-section">
+    <div class="carousel">
+    <button id="carousel-prev" class="carousel-nav">&lt;</button> <!-- Botón anterior -->    
+        <div class="carousel-item" onclick="window.location.href='#'">
+            <img src="assets/images/principal/slide1.webp" alt="CulturizateSDT">
+        </div>
+        <div class="carousel-item" onclick="window.location.href='business/categories/publicos.html'">
+            <img src="assets/images/principal/slide2.webp" alt="Bomberos">
+        </div>
+        <div class="carousel-item" onclick="window.location.href='business/categories/publicos.html'">
+            <img src="assets/images/principal/slide3.webp" alt="centro-vida">
+        </div>
+        <div class="carousel-item" onclick="window.location.href='business/categories/publicos.html'">
+            <img src="assets/images/principal/slide4.webp" alt="Imagen 4">
+        </div>
+        <div class="carousel-item" onclick="window.location.href='business/categories/publicos.html'">
+            <img src="assets/images/principal/slide5.webp" alt="Imagen 5">
+        </div>
+        <div class="carousel-item" onclick="window.location.href='business/categories/publicos.html'">
+            <img src="assets/images/principal/slide6.webp" alt="Entidades Públicas">
+        </div>
+    <button id="carousel-next" class="carousel-nav">&gt;</button> <!-- Botón siguiente -->
+    </div>
+</section>
+
+
+<!-- Horizontal Panel -->
+<div class="horizontal-panel">
+    <button class="hamburger" onclick="toggleNavbar()">☰</button>
+</div>
+
+
+<!-- Navigation Bar -->
+<nav class="navbar" id="sidebar">
+    <div class="navbar-brand">
+        <img src="assets/images/logo.webp" class="menu-img" alt="Directorio Barrancabermeja">
+    </div>
+    <div class="nav-links">
+        <a class="nav-buttons btn" href="https://www.facebook.com/share/153XVs5rya/" target="_blank">Facebook</a>
+        <a class="nav-buttons btn" href="nosotros.html">Nosotros</a>
+        <a class="nav-buttons btn" href="contacto.html">Contacto</a>
+        <button class="nav-buttons btn" id="installBtn">Instalar App</button>
+
+    </div>
+</nav>
+
+<!-- Overlay Background -->
+<div id="overlay" class="overlay" onclick="closeNavbar()"></div>
+
+
+
+    <section class="py-5">
+  <div class="container">
+    <h2 class="text-recomended fade-in mb-4">Empresas Destacadas</h2>
+    <div class="row">
+      <!-- Tarjeta 1 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in">
+        <div class="card h-100 mb-4 shadow-sm">
+          <img src="assets/images/categories/comida/orale/orale.webp" class="card-img-top" alt="Órale que Viva México" style="aspect-ratio: 1/1; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Órale, que Viva México</h5>
+            <p class="card-text">Sabores diferentes que te van a encantar y lo más importante que te vas a llenar 😎🔥.</p>
+            <a href="business/categories/comida/orale.html" class="btn btn-primary mt-auto">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in">
+        <div class="card h-100 mb-4 shadow-sm">
+          <img src="assets/images/principal/cruz-verde.webp" class="card-img-top" alt="Droguería Cruz Verde" style="aspect-ratio: 1/1; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Droguería Cruz Verde</h5>
+            <p class="card-text">Productos farmacéuticos, cuidado personal y servicios de salud a nivel nacional.</p>
+            <a href="business/categories/drogueria/cruz-verde.html" class="btn btn-primary mt-auto">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in">
+        <div class="card h-100 mb-4 shadow-sm">
+          <img src="assets/images/categories/vestuario/adn/adn.webp" class="card-img-top" alt="ADN Couture" style="aspect-ratio: 1/1; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">ADN Couture</h5>
+            <p class="card-text">Las mejores prendas de vestir originales en Socorro, Santander.</p>
+            <a href="business/categories/vestuario/adn.html" class="btn btn-primary mt-auto">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in">
+        <div class="card h-100 mb-4 shadow-sm">
+          <img src="assets/images/principal/publicos.webp" class="card-img-top" alt="Entidades Públicas" style="aspect-ratio: 1/1; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Entidades Públicas</h5>
+            <p class="card-text">Servicios de educación, salud, seguridad y administración pública.</p>
+            <a href="business/categories/publicos.html" class="btn btn-primary mt-auto">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Tarjeta 5 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fade-in">
+        <div class="card h-100 mb-4 shadow-sm">
+          <img src="assets/images/categories/bebida/coco/coco.webp" class="card-img-top" alt="Entidades Públicas" style="aspect-ratio: 1/1; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Coco's Café Bar</h5>
+            <p class="card-text">Coco's Café Bar es el sitio ideal para disfrutar desde una tarde tranquila hasta una noche divertida, con el sabor perfecto entre café, cocteles y buena vibra.</p>
+            <a href="business/categories/bebida/coco.html" class="btn btn-primary mt-auto">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+        <div class= "text-recomended fade-in"><h3>Super Recomendado</h3>
+        <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid05ZRfCXTNLVYftSvojJVVxaADhkwY92cnKVGcUvyBr7fHwTq1oAfr1ySNdURxJZerl%26id%3D100063474525984&width=300&show_text=true&height=620&appId" width="300" height="620" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      
+        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVeinteVienteSocorro%2Fvideos%2F1348378143129270%2F&width=300&show_text=true&height=550&appId" width="300" height="550" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+      
+        <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fantoineshoescol%2Fposts%2Fpfbid02DdPZcVxP8NQXHbHKq4nj9ska6RZ69rXAucCkvRT9oi1HLpqq2iGif7JTpKL6ijM5l&width=300&show_text=true&height=620&appId" width="300" height="620" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <p>&copy; 2025 Directorio Empresarial. Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="floating-panel">
+    <div class="btn-container">
+        <a id="searchButton" class="btn-panel" title="Búsqueda">
+            <i class="fas fa-search"></i>
+        </a>
+        <span class="btn-text">Búsqueda</span>
+    </div>
+
+    <div class="btn-container">
+        <a class="btn-center" href="index.html" title="Inicio">
+            <i class="fas fa-home"></i>
+        </a>
+        <span class="btn-text">Inicio</span>
+    </div>
+
+    <div class="btn-container">
+        <a class="btn-panel" href="business/categories.html" title="Categorías">
+            <i class="fas fa-list"></i>
+        </a>
+        <span class="btn-text">Categorías</span>
+    </div>
+</div>
+
+
+<!-- Modal de Búsqueda -->
+<div id="searchModal" class="search-modal">
+    <div class="search-modal-content">
+        <button id="closeSearchModal" class="close-btn">&times;</button>
+        <h2>Buscar</h2>
+        <input type="text" id="searchInput" class="search-input" placeholder="Escribe aquí tu búsqueda...">
+        <button id="startSearchBtn" class="start-search-btn">Iniciar Búsqueda</button>
+        <div id="searchResults" class="search-results"></div> <!-- Sección para mostrar resultados -->
+    </div>
+</div>
+
+
+
+    <!-- JS Frameworks -->
+    <script src="scripts/custom.js" defer></script>
+    <script src="scripts/service-worker.js" defer></script>
+    
+    
+
+</body>
+</html>
