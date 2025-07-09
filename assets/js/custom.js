@@ -15,141 +15,91 @@ document.addEventListener("DOMContentLoaded", () => {
     fadeInElements.forEach(element => observer.observe(element));
 });
 
-// Obtener elementos del DOM
+// ✅ Obtener elementos del DOM
 const searchButton = document.getElementById('searchButton');
 const closeSearchModal = document.getElementById('closeSearchModal');
 const searchModal = document.getElementById('searchModal');
 const startSearchBtn = document.getElementById('startSearchBtn');
 const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
 
-// Asegurar que el modal esté oculto al cargar la página
+// ✅ Ocultar modal al cargar
 if (searchModal) {
-    searchModal.style.display = 'none';
+  searchModal.style.display = 'none';
 }
 
-// Lista de páginas donde buscar IDs
-const pagesToSearch = [
-    '../business/categories/vestuario.html',
-    '../business/categories/comida.html',
-    '../business/categories/comida/guadalupe.html',
-    '../business/categories/belleza.html',
-    '../business/categories/bebidas.html',
-    '../business/categories/gimnasio.html',
-    '../business/categories/drogueria.html',
-    '../business/categories/entretenimiento.html',
-    '../business/categories/mascotas.html',
-    '../business/categories/mecanica.html',
-    '../business/categories/inmobiliaria.html',
-    '../business/categories/hotel.html',
-    '../business/categories/tecnologia.html',
-    '../business/categories/transporte.html',
-    '../business/categories/deportes.html',
-    '../business/categories/ferreteria.html',
-    '../business/categories/profesionales.html',
-    '../business/categories/publicos.html',
-    '../business/categories.html',
-];
-
-// Añadir la página actual al array de páginas a buscar
-pagesToSearch.push(window.location.pathname); // Agrega la página actual al array
-
-// Verificar si los elementos existen antes de añadir eventos
+// ✅ Abrir modal
 if (searchButton && searchModal) {
-    searchButton.addEventListener('click', () => {
-        searchModal.style.display = 'flex';
-    });
+  searchButton.addEventListener('click', () => {
+    searchModal.style.display = 'flex';
+  });
 
-    closeSearchModal.addEventListener('click', () => {
-        searchModal.style.display = 'none';
-    });
+  closeSearchModal.addEventListener('click', () => {
+    searchModal.style.display = 'none';
+  });
 
-    // Cerrar el modal si se hace clic fuera del contenido
-    window.addEventListener('click', (e) => {
-        if (e.target === searchModal) {
-            searchModal.style.display = 'none';
-        }
-    });
-}
-
-// Normalizar IDs (eliminar espacios y convertir a minúsculas)
-function normalizeId(id) {
-    return id ? id.toLowerCase().replace(/\s+/g, '') : '';
-}
-
-// Buscar ID en múltiples páginas con coincidencias parciales y mejor presentación
-async function searchIdInPages(query) {
-    if (!searchResults) return;
-    
-    searchResults.innerHTML = "<p>🔍 Buscando...</p>";
-    const normalizedQuery = normalizeId(query);
-    let results = [];
-
-    console.log("🔎 Iniciando búsqueda de:", normalizedQuery);
-
-    for (const page of pagesToSearch) {
-        try {
-            console.log(`📄 Buscando en: ${page}...`);
-            const response = await fetch(page);
-            if (!response.ok) {
-                console.warn(`⚠️ No se pudo cargar ${page}`);
-                continue; // Si la página no carga, saltar
-            }
-
-            const htmlText = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlText, 'text/html');
-
-            // Buscar todos los elementos con ID
-            const allElements = doc.querySelectorAll('[id]');
-            console.log(`🔍 Encontrados ${allElements.length} elementos`);
-
-            allElements.forEach(el => {
-                if (normalizeId(el.id).includes(normalizedQuery)) { // 🔥 Ahora busca coincidencias parciales
-                    console.log(`✅ Coincidencia encontrada`);
-
-                    // Obtener el nombre del archivo actual (sin extensión .html)
-                    const fileName = page.split('/').pop().replace('.html', '');
-
-                    results.push(`
-                        <div class="result-item">
-                            <a href="${page}#${el.id}" class="result-link" onclick="closeSearchModalFunction()">
-                                <strong>${el.id.toUpperCase()}</strong> en ${fileName.toUpperCase()}
-                            </a>
-                        </div>
-                    `);
-                }
-            });
-
-        } catch (error) {
-            console.error(`❌ Error al cargar ${page}:`, error);
-        }
+  window.addEventListener('click', (e) => {
+    if (e.target === searchModal) {
+      searchModal.style.display = 'none';
     }
-
-    // Mostrar los resultados en el modal con mejor diseño
-    searchResults.innerHTML = results.length > 0 
-        ? results.join('') 
-        : "<p>❌ No se encontró ningún resultado.</p>";
+  });
 }
 
-// Función para cerrar el modal al hacer clic en un resultado
+// ✅ Función para cerrar modal
 function closeSearchModalFunction() {
-    if (searchModal) {
-        searchModal.style.display = 'none';
-    }
+  if (searchModal) {
+    searchModal.style.display = 'none';
+  }
 }
 
-// Evento al hacer clic en "Iniciar Búsqueda"
 if (startSearchBtn && searchInput) {
-    startSearchBtn.addEventListener('click', () => {
-        const query = searchInput.value.trim();
-        if (query) {
-            searchIdInPages(query);
-        } else {
-            alert('Por favor, ingresa un término de búsqueda.');
-        }
-    });
+  startSearchBtn.addEventListener('click', () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      // Calcula la carpeta base de tu proyecto
+      const base = window.location.origin + '/' + window.location.pathname.split('/')[1];
+      window.location.href = `/resultados.html?q=${encodeURIComponent(query)}`;
+    } else {
+      alert('Por favor, ingresa un término de búsqueda.');
+    }
+  });
 }
+
+  const params = new URLSearchParams(window.location.search);
+  const searchTerm = params.get('q');
+
+  if (searchTerm) {
+    const normalized = searchTerm.toLowerCase().trim();
+
+    // Busca todos los elementos de texto del body
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+
+    let found = false;
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (node.nodeValue.toLowerCase().includes(normalized)) {
+        const span = document.createElement('span');
+        span.style.background = 'yellow';
+        span.textContent = node.nodeValue;
+
+        const highlight = span.textContent.replace(new RegExp(normalized, 'gi'), `<mark>$&</mark>`);
+        const wrapper = document.createElement('span');
+        wrapper.innerHTML = highlight;
+        node.parentNode.replaceChild(wrapper, node);
+
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      console.log('No se encontró la palabra:', searchTerm);
+    }
+  }
+
+
+
+
 
   function mostrarBoton() {
     const select = document.getElementById('selector-cuadrantes');
